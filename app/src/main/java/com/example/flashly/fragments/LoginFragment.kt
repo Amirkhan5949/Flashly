@@ -5,23 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.example.flashly.R
+import com.example.flashly.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding : FragmentLoginBinding
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(layoutInflater)
+        init()
+        setOnCLickListner()
+        return binding.root
     }
 
-    companion object {
+    private fun init() {
+        navController = findNavController()
+    }
+
+    private fun setOnCLickListner() {
+        binding.signUpHere.setOnClickListener {
+            navController.navigate(R.id.action_login_fragment_to_signUp_fragment)
+        }
     }
 }
