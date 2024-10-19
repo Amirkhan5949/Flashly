@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.navigation.safeargs)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -75,4 +77,23 @@ dependencies {
     //Navigation Component
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+
+    //Interceptor
+    implementation(libs.logging.interceptor)
+
+    //Viewmodel
+    implementation(libs.viewmodel)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
+
+    //Coroutines
+    implementation(libs.coroutines)
+
+    //DaggerHilt
+    implementation(libs.daggerhilt)
+    kapt(libs.hiltcompiler)
 }
